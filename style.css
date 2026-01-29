@@ -5,7 +5,7 @@ body {
     background-image: url("sunflower.jpg");
     background-size: cover;
     background-position: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .center {
@@ -17,44 +17,50 @@ body {
     background-color: rgba(0, 0, 0, 0.45);
 }
 
+/* Typing effect – fancy letters, bigger size, cursive */
 h1 {
     color: white;
-    font-size: 58px;
+    font-size: 75px;  /* size increase */
     margin-bottom: 20px;
-    letter-spacing: 4px;
-    text-shadow: 0 0 20px gold;
+    letter-spacing: 5px;
+    text-shadow: 0 0 25px gold;
+    font-family: 'Brush Script MT', cursive; /* cursive font */
 }
 
+/* Small line under main text */
 p {
     color: #ffeb3b;
-    font-size: 20px;
+    font-size: 22px;
 }
 
-/* Blue square glowing button */
+/* Blue square glowing button with cursive letters */
 button {
-    margin-top: 30px;
-    width: 220px;
-    height: 65px;
-    font-size: 22px;
+    margin-top: 35px;
+    width: 240px;
+    height: 70px;
+    font-size: 26px;
     font-weight: bold;
+    font-family: 'Brush Script MT', cursive; /* cursive letters */
     color: white;
     background-color: #0066ff;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     box-shadow: 0 0 15px #3399ff;
     animation: glowBtn 1.8s infinite alternate;
 }
 
+/* Button glow animation */
 @keyframes glowBtn {
     from {
         box-shadow: 0 0 10px #3399ff;
     }
     to {
-        box-shadow: 0 0 25px #66ccff;
+        box-shadow: 0 0 30px #66ccff;
     }
 }
 
+/* Hover effect */
 button:hover {
-    transform: scale(1.08);
+    transform: scale(1.1);
 }
