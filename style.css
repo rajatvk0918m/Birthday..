@@ -16,6 +16,29 @@ body {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.4);
 }
+h1 {
+    color: #fff;
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: moveGlow 3s infinite;
+}body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url("sunflower.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.center {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
 h1 {
     color: white;
@@ -36,5 +59,29 @@ button {
     border-radius: 25px;
     background-color: #ffcc00;
     cursor: pointer;
+}button {
+    margin-top: 25px;
+    padding: 20px 45px;
+    font-size: 22px;
+    border: none;
+    border-radius: 35px;
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    cursor: pointer;
+    transition: 0.3s;
+}@keyframes moveGlow {
+    0% {
+        transform: translateY(0);
+        text-shadow: 0 0 10px yellow;
+    }
+    50% {
+        transform: translateY(-15px);
+        text-shadow: 0 0 30px gold;
+    }
+    100% {
+        transform: translateY(0);
+        text-shadow: 0 0 10px yellow;
+    }
+}button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px orange;
 }
-
