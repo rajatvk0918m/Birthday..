@@ -16,12 +16,14 @@ body {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
 h1 {
     color: #fff;
     font-size: 60px;
     margin-bottom: 15px;
     animation: moveGlow 3s infinite;
 }
+
 @keyframes moveGlow {
     0% {
         transform: translateY(0);
@@ -35,6 +37,13 @@ h1 {
         transform: translateY(0);
         text-shadow: 0 0 10px yellow;
     }
+}
+
+p {
+    color: #ffd700;
+    font-size: 20px;
+}
+
 button {
     margin-top: 25px;
     padding: 20px 45px;
@@ -45,6 +54,7 @@ button {
     cursor: pointer;
     transition: 0.3s;
 }
+
 button:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px orange;
