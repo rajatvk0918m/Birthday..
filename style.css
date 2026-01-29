@@ -6,7 +6,7 @@ body {
     background-size: cover;
     background-position: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    animation: vibrateBG 0.1s infinite alternate; /* background vibration */
+    animation: vibrateBG 0.1s infinite alternate;
 }
 
 @keyframes vibrateBG {
@@ -23,25 +23,25 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.45);
+    background-color: rgba(0,0,0,0.45);
+    position: relative;
 }
 
-/* Typing effect – fancy letters, bigger size, cursive */
 h1 {
     color: white;
     font-size: 75px;
-    margin-bottom: 20px;
     letter-spacing: 5px;
     text-shadow: 0 0 25px gold;
     font-family: 'Brush Script MT', cursive;
+    position: relative; /* center text naturally */
 }
 
 /* Surprise button – initially hidden */
 #surpriseBtn {
     margin-top: 30px;
-    width: 240px;
-    height: 70px;
-    font-size: 26px;
+    width: 280px;
+    height: 80px;
+    font-size: 32px;
     font-weight: bold;
     font-family: 'Brush Script MT', cursive;
     color: white;
@@ -51,8 +51,8 @@ h1 {
     cursor: pointer;
     box-shadow: 0 0 15px #3399ff;
     animation: glowBtn 1.8s infinite alternate;
-    opacity: 0; /* initially hidden */
-    pointer-events: none; /* not clickable yet */
+    opacity: 0;
+    pointer-events: none;
 }
 
 @keyframes glowBtn {
@@ -62,4 +62,40 @@ h1 {
 
 #surpriseBtn:hover {
     transform: scale(1.1);
+}
+
+/* Balloons */
+#balloons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    width: 60px;
+    bottom: -80px;
+    animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+    to { transform: translateY(-600px); }
+}
+
+/* Cake */
+#cake {
+    display: none;
+    width: 250px;
+    margin-top: 20px;
+    z-index: 10;
+}
+
+/* Cake instructions */
+#cakeText {
+    color: #ffeb3b;
+    font-size: 28px;
+    margin-top: 15px;
+    text-align: center;
 }
