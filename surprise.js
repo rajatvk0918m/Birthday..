@@ -6,11 +6,16 @@ let balloonCount = 0;
 
 function showNextBalloon(){
     if(balloonCount < 5){
-        const balloon = document.createElement("img");
-        balloon.src = `balloon${balloonCount+1}.png`;
-        balloon.className = "balloon";
+        const balloon = document.createElement("div");
+        balloon.style.width = "60px";
+        balloon.style.height = "80px";
+        balloon.style.background = "blue";
+        balloon.style.borderRadius = "30px";
+        balloon.style.position = "absolute";
+        balloon.style.bottom = "0px";
         balloon.style.left = `${10 + balloonCount*15}%`;
-        balloonContainer.appendChild(balloon);
+        balloon.style.cursor = "pointer";
+        balloon.style.transition = "all 1s ease";
 
         balloon.onclick = () => {
             balloon.style.transform = "translateY(-500px) rotate(360deg)";
@@ -18,12 +23,12 @@ function showNextBalloon(){
             balloonCount++;
             setTimeout(showNextBalloon, 1000);
         }
+
+        balloonContainer.appendChild(balloon);
     } else {
-        // 5th balloon clicked, show candle & cake
-        setTimeout(()=>{ candle.style.display = "block"; }, 500);
-        setTimeout(()=>{ cake.style.display = "block"; }, 2000);
+        setTimeout(()=>{ candle.style.display="block"; }, 500);
+        setTimeout(()=>{ cake.style.display="block"; }, 2000);
     }
 }
 
-// Start first balloon
 showNextBalloon();
