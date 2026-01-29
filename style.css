@@ -1,3 +1,4 @@
+/* ------------------ COMMON ------------------ */
 body{
     margin:0;
     padding:0;
@@ -8,6 +9,7 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Center container */
 .center{
     height:100vh;
     display:flex;
@@ -18,15 +20,17 @@ body{
     position: relative;
 }
 
+/* ------------------ INDEX PAGE ------------------ */
 h1{
     color:white;
     font-size:75px;
     letter-spacing:5px;
     text-shadow:0 0 25px gold;
     font-family: 'Brush Script MT', cursive;
-    position: relative;
+    text-align:center;
 }
 
+/* Surprise button */
 #surpriseBtn{
     margin-top:30px;
     width:280px;
@@ -54,14 +58,14 @@ h1{
     transform: scale(1.1);
 }
 
-/* Surprise page */
-
+/* ------------------ SURPRISE PAGE ------------------ */
 #balloonContainer{
     position:absolute;
     width:100%;
     height:100%;
 }
 
+/* Balloon styling */
 .balloon{
     position:absolute;
     width:60px;
@@ -70,14 +74,18 @@ h1{
     transition: all 1s ease;
 }
 
+/* Candle styling */
 #candle{
     display:none;
     width:50px;
     margin-top:20px;
+    transition: all 1s ease;
 }
 
+/* Cake styling */
 #cake{
     display:none;
     width:250px;
     margin-top:20px;
+    transition: all 1s ease;
 }
