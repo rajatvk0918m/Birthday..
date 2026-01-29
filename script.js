@@ -1,36 +1,26 @@
-const balloonContainer = document.getElementById("balloonContainer");
-const candle = document.getElementById("candle");
-const cake = document.getElementById("cake");
+const text = "𝓗𝓪𝓹𝓹𝔂 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂 🎉";
+let index = 0;
+const speed = 200;
 
-let balloonCount = 0;
+const typingElement = document.getElementById("typing");
+const surpriseBtn = document.getElementById("surpriseBtn");
 
-function showNextBalloon() {
-    if(balloonCount < 5){
-        const balloon = document.createElement("img");
-        balloon.src = `balloon${balloonCount+1}.png`;
-        balloon.className = "balloon";
-        balloon.style.width = "60px";
-        balloon.style.position = "absolute";
-        balloon.style.bottom = "0px";
-        balloon.style.left = `${20 + balloonCount*15}%`;
-        balloon.style.cursor = "pointer";
-
-        balloon.onclick = () => {
-            balloon.style.transition = "all 1s ease";
-            balloon.style.transform = "translateY(-500px) rotate(360deg)";
-            balloon.style.opacity = 0;
-            balloonCount++;
-            setTimeout(showNextBalloon, 1000); // next balloon after 1s
-        }
-
-        balloonContainer.appendChild(balloon);
+function typeEffect() {
+    if(index < text.length){
+        typingElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, speed);
     } else {
-        // All balloons clicked, show candle
-        setTimeout(() => { candle.style.display = "block"; }, 500);
-        // Then cake
-        setTimeout(() => { cake.style.display = "block"; }, 2000);
+        // show surprise button
+        setTimeout(() => {
+            surpriseBtn.style.opacity = 1;
+            surpriseBtn.style.pointerEvents = "auto";
+        }, 500);
     }
 }
+typeEffect();
 
-// Start first balloon
-showNextBalloon();
+function goToSurprise() {
+    document.getElementById("bgMusic").play();
+    window.location.href = "surprise.html";
+}
