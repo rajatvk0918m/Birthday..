@@ -11,7 +11,7 @@ function typeEffect() {
         index++;
         setTimeout(typeEffect, speed);
     } else {
-        // show surprise button
+        // show surprise button after typing
         setTimeout(() => {
             surpriseBtn.style.opacity = 1;
             surpriseBtn.style.pointerEvents = "auto";
