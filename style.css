@@ -8,7 +8,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Center content */
 .center {
     height: 100vh;
     display: flex;
@@ -18,36 +17,20 @@ body {
     background-color: rgba(0, 0, 0, 0.45);
 }
 
-/* HAPPY BIRTHDAY move + glow */
 h1 {
     color: white;
     font-size: 58px;
     margin-bottom: 20px;
-    animation: moveText 2.5s infinite ease-in-out;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px gold;
 }
 
-@keyframes moveText {
-    0% {
-        transform: translateY(0);
-        text-shadow: 0 0 10px yellow;
-    }
-    50% {
-        transform: translateY(-20px);
-        text-shadow: 0 0 25px gold;
-    }
-    100% {
-        transform: translateY(0);
-        text-shadow: 0 0 10px yellow;
-    }
-}
-
-/* Small line */
 p {
     color: #ffeb3b;
     font-size: 20px;
 }
 
-/* SURPRISE BUTTON – blue square glowing box */
+/* Blue square glowing button */
 button {
     margin-top: 30px;
     width: 220px;
@@ -57,13 +40,12 @@ button {
     color: white;
     background-color: #0066ff;
     border: none;
-    border-radius: 10px;   /* square box look */
+    border-radius: 10px;
     cursor: pointer;
     box-shadow: 0 0 15px #3399ff;
     animation: glowBtn 1.8s infinite alternate;
 }
 
-/* Button glow animation */
 @keyframes glowBtn {
     from {
         box-shadow: 0 0 10px #3399ff;
@@ -73,7 +55,6 @@ button {
     }
 }
 
-/* Hover effect */
 button:hover {
     transform: scale(1.08);
 }
