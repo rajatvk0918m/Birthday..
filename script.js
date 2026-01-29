@@ -1,6 +1,7 @@
-const text = "HAPPY BIRTHDAY 🎉";
+// Each letter is already cursive/fancy
+const text = "𝓗𝓪𝓹𝓹𝔂 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂 🎉"; 
 let index = 0;
-const speed = 200;
+const speed = 200; // typing speed in ms
 
 function typeEffect() {
     if (index < text.length) {
