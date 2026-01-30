@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Surprise</title>
 <style>
 body{
   margin:0;
-  background:black;
   height:100vh;
+  background:url("yourPhoto.jpg") no-repeat center/cover; /* tumhara photo yaha */
+  background-size:cover;
   display:flex;
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  color:white;
   font-family:cursive;
 }
 
 #options{
   display:none;
-  font-size:40px;
+  margin-top:50px;
+  text-align:center;
 }
 
 .option{
   margin:20px;
-  cursor:pointer;
+  font-size:50px;
   color:yellow;
+  cursor:pointer;
+  text-shadow: 0 0 10px yellow, 0 0 20px orange;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow{
+  0%{text-shadow:0 0 10px yellow,0 0 20px orange;}
+  50%{text-shadow:0 0 20px yellow,0 0 30px orange;}
+  100%{text-shadow:0 0 10px yellow,0 0 20px orange;}
 }
 </style>
 </head>
 
 <body>
 
-<video id="vid" width="80%" autoplay>
-  <source src="intro.mp4" type="video/mp4">
-</video>
-
 <div id="options">
   <div class="option" onclick="goCelebrate()">🎉 Celebrate</div>
-  <div class="option">📸 Recap</div>
+  <div class="option" onclick="goRecap()">📸 Recap</div>
 </div>
 
 <script src="surprise.js"></script>
