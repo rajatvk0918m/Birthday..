@@ -1,41 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <title>Surprise</title>
-
 <style>
 body{
   margin:0;
+  background:black;
   height:100vh;
-  background:#ffe082;
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow:hidden;
+  flex-direction:column;
+  color:white;
   font-family:cursive;
 }
 
-/* balloons */
-.balloon{
-  width:120px;
-  position:absolute;
-  bottom:-150px;
-  cursor:pointer;
-  transition: transform 1s ease;
+#options{
+  display:none;
+  font-size:40px;
 }
 
-/* cake text */
-#cake{
-  font-size:70px;
-  display:none;
+.option{
+  margin:20px;
+  cursor:pointer;
+  color:yellow;
 }
 </style>
 </head>
 
 <body>
 
-<div id="cake">🎂 Cake Cut 🎂</div>
+<video id="vid" width="80%" autoplay>
+  <source src="intro.mp4" type="video/mp4">
+</video>
+
+<div id="options">
+  <div class="option" onclick="goCelebrate()">🎉 Celebrate</div>
+  <div class="option">📸 Recap</div>
+</div>
 
 <script src="surprise.js"></script>
 </body>
