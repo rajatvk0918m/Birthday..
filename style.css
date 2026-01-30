@@ -1,91 +1,39 @@
-/* ------------------ COMMON ------------------ */
 body{
-    margin:0;
-    padding:0;
-    height:100vh;
-    background-image: url("sunflower.jpg");
-    background-size: cover;
-    background-position: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin:0;
+  height:100vh;
+  background: url("sunflower.jpg") no-repeat center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  font-family:cursive;
+  overflow:hidden;
 }
 
-/* Center container */
-.center{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background-color: rgba(0,0,0,0.45);
-    position: relative;
+/* typing text */
+#typing{
+  font-size:80px;
+  color:#8b0000;
+  background:rgba(255,255,255,0.7);
+  padding:20px 40px;
+  border-radius:20px;
 }
 
-/* ------------------ INDEX PAGE ------------------ */
-h1{
-    color:white;
-    font-size:75px;
-    letter-spacing:5px;
-    text-shadow:0 0 25px gold;
-    font-family: 'Brush Script MT', cursive;
-    text-align:center;
-}
-
-/* Surprise button */
+/* surprise button */
 #surpriseBtn{
-    margin-top:30px;
-    width:280px;
-    height:80px;
-    font-size:32px;
-    font-weight:bold;
-    font-family: 'Brush Script MT', cursive;
-    color:white;
-    background-color:#0066ff;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    box-shadow:0 0 15px #3399ff;
-    animation: glowBtn 1.8s infinite alternate;
-    opacity:0;
-    pointer-events:none;
+  margin-top:40px;
+  padding:20px 60px;
+  font-size:50px;
+  border:none;
+  border-radius:20px;
+  background:blue;
+  color:white;
+  cursor:pointer;
+  display:none;
+  animation: glow 1s infinite alternate;
 }
 
-@keyframes glowBtn{
-    from{box-shadow:0 0 10px #3399ff;}
-    to{box-shadow:0 0 30px #66ccff;}
-}
-
-#surpriseBtn:hover{
-    transform: scale(1.1);
-}
-
-/* ------------------ SURPRISE PAGE ------------------ */
-#balloonContainer{
-    position:absolute;
-    width:100%;
-    height:100%;
-}
-
-/* Balloon styling */
-.balloon{
-    position:absolute;
-    width:60px;
-    bottom:0px;
-    cursor:pointer;
-    transition: all 1s ease;
-}
-
-/* Candle styling */
-#candle{
-    display:none;
-    width:50px;
-    margin-top:20px;
-    transition: all 1s ease;
-}
-
-/* Cake styling */
-#cake{
-    display:none;
-    width:250px;
-    margin-top:20px;
-    transition: all 1s ease;
+@keyframes glow{
+  from{ box-shadow:0 0 10px cyan; }
+  to{ box-shadow:0 0 30px cyan; }
 }
