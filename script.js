@@ -1,20 +1,19 @@
 let text = "𝓗𝓪𝓹𝓹𝔂 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂";
 let i = 0;
-let typing = document.getElementById("typing");
+let box = document.getElementById("birthdayText");
 let btn = document.getElementById("surpriseBtn");
 
-function typeEffect(){
+function type(){
   if(i < text.length){
-    typing.innerHTML += text.charAt(i);
+    box.innerHTML += text.charAt(i);
     i++;
-    setTimeout(typeEffect,150);
+    setTimeout(type,150);
   }else{
     btn.style.display = "block";
   }
 }
+type();
 
-typeEffect();
-
-btn.onclick = function(){
+btn.onclick = () => {
   window.location.href = "surprise.html";
 };
