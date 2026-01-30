@@ -6,25 +6,25 @@ let balloons = [
   "balloon5.jpg"
 ];
 
-let index = 0;
+let current = 0;
 
-function showBalloon(){
-  if(index < balloons.length){
+function showNextBalloon(){
+  if(current < balloons.length){
     let img = document.createElement("img");
-    img.src = balloons[index];
+    img.src = balloons[current];
     img.className = "balloon";
-    img.style.left = (10 + index*15) + "%";
+    img.style.left = (10 + current * 15) + "%";
 
     img.onclick = function(){
-      img.style.transform = "translateY(-600px)";
-      index++;
-      setTimeout(showBalloon,400);
+      img.style.transform = "translateY(-700px)";
+      current++;
+      setTimeout(showNextBalloon, 500);
     };
 
     document.body.appendChild(img);
   }else{
-    document.getElementById("msg").style.display = "block";
+    document.getElementById("cake").style.display = "block";
   }
 }
 
-showBalloon();
+showNextBalloon();
