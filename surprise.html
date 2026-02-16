@@ -2,50 +2,157 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Surprise</title>
+<title>Happy Birthday</title>
+
 <style>
 body{
   margin:0;
   height:100vh;
-  background:url("yourPhoto.jpg") no-repeat center/cover; /* tumhara photo yaha */
-  background-size:cover;
+  overflow:hidden;
+  background:black;
   display:flex;
   justify-content:center;
   align-items:center;
   flex-direction:column;
   font-family:cursive;
-}
-
-#options{
-  display:none;
-  margin-top:50px;
-  text-align:center;
-}
-
-.option{
-  margin:20px;
-  font-size:50px;
-  color:yellow;
   cursor:pointer;
-  text-shadow: 0 0 10px yellow, 0 0 20px orange;
-  animation: glow 1s infinite alternate;
+}
+
+/* TAP SCREEN */
+#tapScreen{
+  color:white;
+  font-size:50px;
+  text-shadow:0 0 20px red;
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  0%{opacity:1;}
+  50%{opacity:0.5;}
+  100%{opacity:1;}
+}
+
+/* CRACK EFFECT */
+.crack{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:url("https://i.imgur.com/7QKQZ8K.png") center/cover no-repeat;
+  opacity:0;
+  animation:crackAnim 0.5s forwards;
+}
+
+@keyframes crackAnim{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* FINAL SCREEN */
+#final{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to bottom,#000428,#004e92);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+/* TITLE */
+.title{
+  position:absolute;
+  top:40px;
+  font-size:60px;
+  color:white;
+  text-shadow:0 0 10px yellow,0 0 20px orange,0 0 40px gold;
+  animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-  0%{text-shadow:0 0 10px yellow,0 0 20px orange;}
-  50%{text-shadow:0 0 20px yellow,0 0 30px orange;}
-  100%{text-shadow:0 0 10px yellow,0 0 20px orange;}
+  from{ text-shadow:0 0 10px yellow;}
+  to{ text-shadow:0 0 40px gold;}
+}
+
+/* PHOTO */
+.photo{
+  width:320px;
+  border-radius:20px;
+  box-shadow:0 0 50px hotpink;
+  animation:zoom 4s infinite alternate;
+}
+
+@keyframes zoom{
+  from{ transform:scale(1);}
+  to{ transform:scale(1.05);}
+}
+
+/* STAR RAIN */
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px white;
+  animation: fall linear forwards;
+}
+
+@keyframes fall{
+  from{ transform:translateY(-10px); opacity:1;}
+  to{ transform:translateY(100vh); opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<div id="options">
-  <div class="option" onclick="goCelebrate()">🎉 Celebrate</div>
-  <div class="option" onclick="goRecap()">📸 Recap</div>
+<div id="tapScreen">💥 Tap To Open 💥</div>
+
+<div id="final">
+  <div class="title">✨ Happy Birthday ✨</div>
+  <img src="yourPhoto.jpg" class="photo">
+
+  <audio id="song" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
 </div>
 
-<script src="surprise.js"></script>
+<script>
+
+let tapped=false;
+
+document.body.onclick=function(){
+  if(tapped) return;
+  tapped=true;
+
+  // Crack Effect
+  let crack=document.createElement("div");
+  crack.className="crack";
+  document.body.appendChild(crack);
+
+  // After 0.6 sec show final screen
+  setTimeout(()=>{
+    document.getElementById("tapScreen").style.display="none";
+    document.getElementById("final").style.display="flex";
+    document.getElementById("song").play();
+    crack.remove();
+
+    // Start Star Rain
+    setInterval(()=>{
+      let star=document.createElement("div");
+      star.className="star";
+      star.style.left=Math.random()*100+"%";
+      star.style.animationDuration=(2+Math.random()*3)+"s";
+      document.getElementById("final").appendChild(star);
+      setTimeout(()=>{star.remove();},5000);
+    },150);
+
+  },600);
+};
+
+</script>
+
 </body>
 </html>
