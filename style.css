@@ -12,30 +12,33 @@ body{
 
 #birthdayText{
   font-size:80px;
-  color:white;
-  text-shadow: 0 0 10px yellow, 0 0 20px yellow;
+  color:#fff;
+  text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #ff0;
   animation: float 2s infinite alternate;
 }
 
 @keyframes float{
-  from{ transform:translateY(0);}
-  to{ transform:translateY(-20px);}
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-20px);}
 }
 
+/* Surprise button */
 #surpriseBtn{
   display:none;
-  margin-top:40px;
-  padding:20px 60px;
-  font-size:40px;
+  margin-top:50px;
+  padding:25px 70px;
+  font-size:45px;
   border:none;
   border-radius:20px;
-  background:linear-gradient(45deg,#00f,#0ff);
+  background:linear-gradient(45deg, #00f, #0ff);
   color:white;
   cursor:pointer;
+  box-shadow: 0 0 20px cyan;
   animation: glow 1s infinite alternate;
 }
 
 @keyframes glow{
-  from{ box-shadow:0 0 10px cyan;}
-  to{ box-shadow:0 0 30px cyan;}
+  0%{box-shadow:0 0 10px cyan;}
+  50%{box-shadow:0 0 30px cyan;}
+  100%{box-shadow:0 0 20px cyan;}
 }
