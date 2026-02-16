@@ -6,128 +6,123 @@
 
 <style>
 body{
-    margin:0;
-    padding:0;
-    background:linear-gradient(to top,#000428,#004e92);
-    overflow:hidden;
-    text-align:center;
-    font-family:cursive;
+  margin:0;
+  padding:0;
+  background:black;
+  overflow:hidden;
+  font-family:Arial;
+  text-align:center;
+  color:white;
 }
 
-/* Happy Birthday */
+/* First Page */
+#page1{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(45deg,#000000,#1a1a1a);
+}
+
+.sunflower{
+  font-size:80px;
+  animation:rotate 5s linear infinite;
+}
+
+@keyframes rotate{
+  100%{transform:rotate(360deg);}
+}
+
+button{
+  padding:15px 30px;
+  font-size:20px;
+  border:none;
+  border-radius:10px;
+  background:gold;
+  cursor:pointer;
+}
+
+/* Second Page */
+#page2{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
 h1{
-    margin-top:40px;
-    font-size:60px;
-    color:#fff;
-    text-shadow:0 0 20px #ff00ff,0 0 40px #00ffff;
-    animation: glow 1.5s infinite alternate;
+  margin-top:40px;
+  font-size:40px;
+  color:yellow;
+  text-shadow:0 0 20px gold;
+  animation:glow 1.5s infinite alternate;
 }
 
 @keyframes glow{
-    from{ text-shadow:0 0 10px #ff00ff;}
-    to{ text-shadow:0 0 30px #00ffff;}
+  from{text-shadow:0 0 10px gold;}
+  to{text-shadow:0 0 30px orange;}
 }
 
-/* Photo */
 .photo{
-    margin-top:30px;
-    width:280px;
-    border-radius:20px;
-    box-shadow:0 0 30px #fff;
-    animation: zoom 3s infinite alternate;
+  margin-top:20px;
+  width:250px;
+  border-radius:20px;
+  box-shadow:0 0 20px white;
 }
 
-@keyframes zoom{
-    from{ transform:scale(1);}
-    to{ transform:scale(1.1);}
-}
-
-/* Star fall */
+/* Star fall animation */
 .star{
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:white;
-    border-radius:50%;
-    animation:fall linear infinite;
+  position:absolute;
+  width:3px;
+  height:15px;
+  background:white;
+  animation:fall linear infinite;
 }
 
 @keyframes fall{
-    from{transform:translateY(-10px);}
-    to{transform:translateY(100vh);}
+  from{transform:translateY(-100px);}
+  to{transform:translateY(100vh);}
 }
-
-/* Hearts */
-.heart{
-    position:absolute;
-    color:red;
-    font-size:20px;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    from{transform:translateY(100vh);}
-    to{transform:translateY(-10vh);}
-}
-
-/* Firework */
-.firework{
-    position:absolute;
-    width:5px;
-    height:5px;
-    background:yellow;
-    border-radius:50%;
-    animation:explode 1s ease-out forwards;
-}
-
-@keyframes explode{
-    from{transform:scale(1);}
-    to{transform:scale(15);opacity:0;}
-}
-
 </style>
-</head>
 
+</head>
 <body>
 
-<h1>🎉 Happy Birthday 🎉</h1>
+<!-- First Page -->
+<div id="page1">
+  <div class="sunflower">🌻</div>
+  <h2>Click for Surprise</h2>
+  <button onclick="startSurprise()">Surprise 🎉</button>
+</div>
 
-<img src="photo.jpg" class="photo">
-
-<audio autoplay>
-    <source src="song.mp3" type="audio/mpeg">
-</audio>
+<!-- Second Page -->
+<div id="page2">
+  <h1>🎉 Happy Birthday Bhai 🎉</h1>
+  <img src="photo.jpg" class="photo">
+  <audio id="song" src="song.mp3"></audio>
+</div>
 
 <script>
 
-/* STAR FALL */
-for(let i=0;i<80;i++){
-    let star=document.createElement("div");
-    star.className="star";
-    star.style.left=Math.random()*100+"vw";
-    star.style.animationDuration=(2+Math.random()*3)+"s";
-    document.body.appendChild(star);
+function startSurprise(){
+  document.getElementById("page1").style.display="none";
+  document.getElementById("page2").style.display="block";
+  document.getElementById("song").play();
+  createStars();
 }
 
-/* FLOATING HEARTS */
-setInterval(()=>{
-    let heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="❤";
-    heart.style.left=Math.random()*100+"vw";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),6000);
-},800);
-
-/* FIREWORK BLAST */
-setInterval(()=>{
-    let fire=document.createElement("div");
-    fire.className="firework";
-    fire.style.left=Math.random()*100+"vw";
-    fire.style.top=Math.random()*60+"vh";
-    document.body.appendChild(fire);
-    setTimeout(()=>fire.remove(),1000);
-},1500);
+function createStars(){
+  for(let i=0;i<100;i++){
+    let star = document.createElement("div");
+    star.className="star";
+    star.style.left=Math.random()*100+"%";
+    star.style.animationDuration=(Math.random()*2+2)+"s";
+    document.body.appendChild(star);
+  }
+}
 
 </script>
 
