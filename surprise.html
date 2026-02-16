@@ -1,66 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Surprise</title>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
 
 <style>
 body{
-    margin:0;
-    padding:0;
-    background:linear-gradient(to top,#1a0026,#330066);
-    overflow:hidden;
-    text-align:center;
-    font-family:cursive;
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  background:linear-gradient(to bottom,#000428,#004e92);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  font-family:cursive;
+  cursor:pointer;
 }
 
-h1{
-    margin-top:40px;
-    font-size:55px;
-    color:white;
-    text-shadow:0 0 15px pink,0 0 30px cyan;
+/* BIG HAPPY BIRTHDAY */
+.title{
+  position:absolute;
+  top:40px;
+  font-size:60px;
+  color:white;
+  text-shadow:0 0 10px yellow,0 0 20px orange,0 0 40px gold;
+  animation: glow 2s infinite alternate;
 }
 
+@keyframes glow{
+  from{ text-shadow:0 0 10px yellow,0 0 20px orange;}
+  to{ text-shadow:0 0 20px yellow,0 0 40px gold;}
+}
+
+/* PHOTO */
 .photo{
-    margin-top:30px;
-    width:280px;
-    border-radius:20px;
-    box-shadow:0 0 25px white;
+  width:320px;
+  border-radius:20px;
+  box-shadow:0 0 40px white;
+  animation: photoGlow 2s infinite alternate;
+  z-index:2;
 }
 
+@keyframes photoGlow{
+  from{ box-shadow:0 0 20px white;}
+  to{ box-shadow:0 0 70px hotpink;}
+}
+
+/* STAR RAIN */
 .star{
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:white;
-    border-radius:50%;
-    animation:fall linear infinite;
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px white;
+  animation: fall linear forwards;
 }
 
 @keyframes fall{
-    from{transform:translateY(-10px);}
-    to{transform:translateY(100vh);}
+  from{ transform:translateY(-10px); opacity:1;}
+  to{ transform:translateY(100vh); opacity:0;}
+}
+
+/* HEART */
+.heart{
+  position:absolute;
+  color:red;
+  font-size:20px;
+  animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+  from{ transform:translateY(0); opacity:1;}
+  to{ transform:translateY(-150px); opacity:0;}
+}
+
+/* FIREWORK */
+.particle{
+  position:absolute;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+  from{ transform:translate(0,0); opacity:1;}
+  to{ transform:translate(var(--x),var(--y)); opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<h1>🎉 Happy Birthday 🎉</h1>
+<div class="title">✨ Happy Birthday ✨</div>
 
 <img src="yourPhoto.jpg" class="photo">
 
-<audio autoplay>
-<source src="song.mp3" type="audio/mpeg">
+<audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-for(let i=0;i<80;i++){
-    let star=document.createElement("div");
-    star.className="star";
-    star.style.left=Math.random()*100+"vw";
-    star.style.animationDuration=(2+Math.random()*3)+"s";
-    document.body.appendChild(star);
+
+/* STAR RAIN */
+function createStar(){
+  let star=document.createElement("div");
+  star.className="star";
+  star.style.left=Math.random()*100+"%";
+  star.style.animationDuration=(2+Math.random()*3)+"s";
+  document.body.appendChild(star);
+  setTimeout(()=>{star.remove();},5000);
 }
+setInterval(createStar,150);
+
+/* FLOATING HEARTS */
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"%";
+  heart.style.bottom="0px";
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove();},4000);
+},800);
+
+/* FIREWORK ON CLICK */
+document.body.onclick=(e)=>{
+  for(let i=0;i<25;i++){
+    let p=document.createElement("div");
+    p.className="particle";
+    p.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
+    p.style.left=e.clientX+"px";
+    p.style.top=e.clientY+"px";
+    p.style.setProperty('--x',(Math.random()*200-100)+"px");
+    p.style.setProperty('--y',(Math.random()*200-100)+"px");
+    document.body.appendChild(p);
+    setTimeout(()=>{p.remove();},1000);
+  }
+};
+
 </script>
 
 </body>
