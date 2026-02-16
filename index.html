@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Birthday</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    text-align:center;
+    font-family:cursive;
+    background:url("sunflower.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+/* Happy Birthday */
+h1{
+    margin-top:150px;
+    font-size:60px;
+    color:white;
+    text-shadow:0 0 15px pink,0 0 30px yellow;
+}
+
+/* Surprise Button */
+button{
+    margin-top:40px;
+    padding:15px 40px;
+    font-size:28px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:blue;
+    color:white;
+    box-shadow:0 0 20px cyan;
+}
+button:hover{
+    transform:scale(1.1);
+}
+</style>
 </head>
+
 <body>
 
-<div id="birthdayText"></div>
+<h1>𝓗𝓪𝓹𝓹𝔂 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂</h1>
 
-<button id="surpriseBtn">✨ 𝓢𝓾𝓻𝓹𝓻𝓲𝓼𝓮 ✨</button>
+<button onclick="go()">✨ Surprise ✨</button>
 
-<script src="script.js"></script>
+<script>
+function go(){
+    window.location.href="surprise.html";
+}
+</script>
+
 </body>
 </html>
