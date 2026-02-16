@@ -1,40 +1,41 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background-image: url("sunflower.jpg");
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, sans-serif;
+body{
+  margin:0;
+  height:100vh;
+  background:url("sunflower.jpg") no-repeat center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  font-family:cursive;
+  overflow:hidden;
 }
 
-.center {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.4);
+#birthdayText{
+  font-size:80px;
+  color:white;
+  text-shadow: 0 0 10px yellow, 0 0 20px yellow;
+  animation: float 2s infinite alternate;
 }
 
-h1 {
-    color: white;
-    font-size: 50px;
-    margin-bottom: 10px;
+@keyframes float{
+  from{ transform:translateY(0);}
+  to{ transform:translateY(-20px);}
 }
 
-p {
-    color: #ffd700;
-    font-size: 20px;
+#surpriseBtn{
+  display:none;
+  margin-top:40px;
+  padding:20px 60px;
+  font-size:40px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(45deg,#00f,#0ff);
+  color:white;
+  cursor:pointer;
+  animation: glow 1s infinite alternate;
 }
 
-button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    background-color: #ffcc00;
-    cursor: pointer;
+@keyframes glow{
+  from{ box-shadow:0 0 10px cyan;}
+  to{ box-shadow:0 0 30px cyan;}
 }
-
