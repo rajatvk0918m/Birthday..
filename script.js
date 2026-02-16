@@ -1,18 +1,20 @@
-const text = "HAPPY BIRTHDAY 🎉";
-let index = 0;
-const speed = 200;
+let text="𝓗𝓪𝓹𝓹𝔂 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂";
+let i=0;
+let box=document.getElementById("birthdayText");
+let btn=document.getElementById("surpriseBtn");
 
-function typeEffect() {
-    if (index < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, speed);
-    }
+function typeEffect(){
+  if(i<text.length){
+    box.innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeEffect,150);
+  }else{
+    btn.style.display="block";
+  }
 }
 
 typeEffect();
 
-function playMusic() {
-    document.getElementById("bgMusic").play();
-}
-
+btn.onclick=()=>{
+  window.location.href="surprise.html";
+};
