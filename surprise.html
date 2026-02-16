@@ -2,152 +2,131 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday</title>
+<title>Birthday Surprise</title>
 
 <style>
 body{
   margin:0;
-  height:100vh;
-  overflow:hidden;
+  padding:0;
   background:black;
+  overflow:hidden;
+  font-family:Arial;
+  text-align:center;
+  color:white;
+}
+
+/* First Page */
+#page1{
+  position:absolute;
+  width:100%;
+  height:100%;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
-  font-family:cursive;
+  background:linear-gradient(45deg,#000000,#1a1a1a);
 }
 
-/* BLAST PARTICLE */
-.particle{
-  position:absolute;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  animation: explode 0.8s ease-out forwards;
+.sunflower{
+  font-size:80px;
+  animation:rotate 5s linear infinite;
 }
 
-@keyframes explode{
-  from{
-    transform:translate(0,0);
-    opacity:1;
-  }
-  to{
-    transform:translate(var(--x),var(--y));
-    opacity:0;
-  }
+@keyframes rotate{
+  100%{transform:rotate(360deg);}
 }
 
-/* FINAL SCREEN */
-#final{
+button{
+  padding:15px 30px;
+  font-size:20px;
+  border:none;
+  border-radius:10px;
+  background:gold;
+  cursor:pointer;
+}
+
+/* Second Page */
+#page2{
   display:none;
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to bottom,#000428,#004e92);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
 }
 
-/* TITLE */
-.title{
-  position:absolute;
-  top:40px;
-  font-size:60px;
-  color:white;
-  text-shadow:0 0 10px yellow,0 0 20px orange,0 0 40px gold;
-  animation: glow 2s infinite alternate;
+h1{
+  margin-top:40px;
+  font-size:40px;
+  color:yellow;
+  text-shadow:0 0 20px gold;
+  animation:glow 1.5s infinite alternate;
 }
 
 @keyframes glow{
-  from{ text-shadow:0 0 10px yellow;}
-  to{ text-shadow:0 0 40px gold;}
+  from{text-shadow:0 0 10px gold;}
+  to{text-shadow:0 0 30px orange;}
 }
 
-/* PHOTO */
 .photo{
-  width:320px;
+  margin-top:20px;
+  width:250px;
   border-radius:20px;
-  box-shadow:0 0 50px hotpink;
-  animation: zoom 4s infinite alternate;
+  box-shadow:0 0 20px white;
 }
 
-@keyframes zoom{
-  from{ transform:scale(1);}
-  to{ transform:scale(1.05);}
-}
-
-/* STAR RAIN */
+/* Star fall animation */
 .star{
   position:absolute;
   width:3px;
-  height:3px;
+  height:15px;
   background:white;
-  border-radius:50%;
-  box-shadow:0 0 10px white;
-  animation: fall linear forwards;
+  animation:fall linear infinite;
 }
 
 @keyframes fall{
-  from{ transform:translateY(-10px); opacity:1;}
-  to{ transform:translateY(100vh); opacity:0;}
+  from{transform:translateY(-100px);}
+  to{transform:translateY(100vh);}
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div id="final">
-  <div class="title">✨ Happy Birthday ✨</div>
-  <img src="yourPhoto.jpg" class="photo">
+<!-- First Page -->
+<div id="page1">
+  <div class="sunflower">🌻</div>
+  <h2>Click for Surprise</h2>
+  <button onclick="startSurprise()">Surprise 🎉</button>
+</div>
 
-  <audio id="song" loop>
-    <source src="song.mp3" type="audio/mpeg">
-  </audio>
+<!-- Second Page -->
+<div id="page2">
+  <h1>🎉 Happy Birthday Bhai 🎉</h1>
+  <img src="photo.jpg" class="photo">
+  <audio id="song" src="song.mp3"></audio>
 </div>
 
 <script>
 
-/* FIRECRACKER BLAST ON LOAD */
-window.onload = function(){
+function startSurprise(){
+  document.getElementById("page1").style.display="none";
+  document.getElementById("page2").style.display="block";
+  document.getElementById("song").play();
+  createStars();
+}
 
-  let centerX = window.innerWidth/2;
-  let centerY = window.innerHeight/2;
-
-  for(let i=0;i<40;i++){
-    let p=document.createElement("div");
-    p.className="particle";
-    p.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
-    p.style.left=centerX+"px";
-    p.style.top=centerY+"px";
-    p.style.setProperty('--x',(Math.random()*400-200)+"px");
-    p.style.setProperty('--y',(Math.random()*400-200)+"px");
-    document.body.appendChild(p);
-
-    setTimeout(()=>{p.remove();},800);
+function createStars(){
+  for(let i=0;i<100;i++){
+    let star = document.createElement("div");
+    star.className="star";
+    star.style.left=Math.random()*100+"%";
+    star.style.animationDuration=(Math.random()*2+2)+"s";
+    document.body.appendChild(star);
   }
-
-  // Show final screen after blast
-  setTimeout(()=>{
-    document.getElementById("final").style.display="flex";
-    document.getElementById("song").play();
-
-    // Star rain start
-    setInterval(()=>{
-      let star=document.createElement("div");
-      star.className="star";
-      star.style.left=Math.random()*100+"%";
-      star.style.animationDuration=(2+Math.random()*3)+"s";
-      document.getElementById("final").appendChild(star);
-      setTimeout(()=>{star.remove();},5000);
-    },150);
-
-  },900);
-
-};
+}
 
 </script>
 
 </body>
-</html>
+</html>};
+
+
